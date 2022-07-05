@@ -3,13 +3,18 @@ const authorizer = (req, res, next) => {
   const key = req.query.key;
   if(!key) {
     
-    return res.sendStatus(403)
+    return res.sendStatus(403);
  
   }
 
   if(key === AUTH_KEY) {
    
-    next()
+   return next();
+  
+  } else {
+ 
+    return res.sendStatus(403);
+  
   }
 }
 
