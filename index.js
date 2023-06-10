@@ -8,6 +8,7 @@ const images = require('./database/images')
 const aerect = require('aerect.js');
 const logger = require('morgan')
 const authorizer = require('./middleware/authorizer')
+const request = require("request")
 
 
 const app = express();
@@ -50,7 +51,8 @@ app.get('/:id', async(req, res) => {
    return res.status(404).send()
     
   }
-  return res.redirect(image.url)
+  var url = image.url;
+  return request.get(url).pipe(res);
 })
 
 
