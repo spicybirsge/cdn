@@ -52,7 +52,7 @@ app.get('/:id', async(req, res) => {
     
   }
   var url = image.url;
-  return request.get(url).pipe(res);
+  return await request.get(url).pipe(res);
 })
 
 
