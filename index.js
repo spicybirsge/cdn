@@ -18,7 +18,9 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 
-
+app.get("/authorize", authorizer, async(req, res) => {
+  return res.status(200).json({success: true})
+})
 app.post('/upload', authorizer, upload.single('image'), async (req, res) => {
   const id = aerect.generateID(10);
   if (!req.file) {

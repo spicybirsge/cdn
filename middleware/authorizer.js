@@ -1,4 +1,5 @@
 const AUTH_KEY = process.env.AUTH_KEY
+const safeCompare = require('safe-compare');
 const authorizer = (req, res, next) => {
   const key = req.query.key;
   if(!key) {
@@ -7,7 +8,8 @@ const authorizer = (req, res, next) => {
  
   }
 
-  if(key === AUTH_KEY) {
+  const isKeyCorrect = safeCompare(key, AUTH_KEY)
+  if(isKeyCorrect) {
    
    return next();
   
