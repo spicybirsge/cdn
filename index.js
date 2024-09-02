@@ -27,7 +27,8 @@ const fileFilter = (req, file, cb) => {
 };
 
 
-const upload = multer({ storage: storage, fileFilter: fileFilter });
+const uploadPlanelix = multer({ storage: storage, fileFilter: fileFilter });
+const upload = multer({ storage: storage });
 const cors = require('cors');
 const images = require('./database/images')
 const planelixFiles = require("./database/planelixAttachments")
@@ -68,7 +69,7 @@ app.post('/upload', authorizer, upload.single('image'), async (req, res) => {
 
 })
 
-app.post("/upload/planelix", upload.single("image"), async(req, res) => {
+app.post("/upload/planelix", uploadPlanelix.single("image"), async(req, res) => {
 try {
   let isVideo = false;
 
