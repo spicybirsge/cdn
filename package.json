@@ -1,6 +1,7 @@
 {
   "dependencies": {
     "aerect.js": "^2.0.1",
+    "axios": "^1.7.7",
     "cloudinary": "^1.30.0",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
