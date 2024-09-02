@@ -14,7 +14,7 @@ const replaceUrlExtension = require("./functions/replaceVideoWithMPD")
 
 const fileFilter = (req, file, cb) => {
   const requestURL = req.baseUrl
-  if(requestURL === "/upload") {
+  if(requestURL.startsWith("/upload")) {
     return cb(null, true);
   }
     
