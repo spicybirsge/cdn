@@ -131,7 +131,7 @@ app.get("/planelix/:id", async (req, res) => {
   }
 
   let url = checkIfExist.url;
-  const imageResponse = axios.get(url, {
+  const imageResponse = await axios.get(url, {
     responseType: 'arraybuffer'
 
   })
@@ -168,7 +168,7 @@ app.get('/:id', async (req, res) => {
   }
   const url = image.url;
 
-  const imageResponse = axios.get(url, {
+  const imageResponse = await axios.get(url, {
     responseType: 'arraybuffer'
 
   })
