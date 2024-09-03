@@ -149,16 +149,29 @@ app.get('/status', async (req, res) => {
 app.get('/', async (req, res) => {
   res.sendStatus(403)
 });
-app.get('/proxy', async (req, res) => {
-  const url = req.query.url;
-  const response = await axios.get(url, {
-    responseType: 'arraybuffer',
-  })
+app.get("/proxy", async(req, res) => {
+  try {
+      const {url} = req.query;
+      if(!url) {
+          return res.status(400).json({success:false, message: 'Invalid url', code: 400})
+      }
+      if(!url.startsWith("http://") && !url.startsWith("https://")) {
+          return res.status(400).json({success:false, message: 'Invalid url', code: 400})
+      }
+      const response = await axios.get(url, {
+          responseType: 'arraybuffer',
+        })
 
-  const filetype = response.headers['content-type'];
-  res.set('Content-Type', filetype);
-  res.send(response.data)
+        const filetype = response.headers['content-type'];
+        res.set('Content-Type', filetype);
+        res.send(response.data)
+  } catch(e) {
+      console.error(e)
+      return res.status(500).json({success:false, message: 'Internal server error', code: 500})
+  }
+
 })
+
 app.get('/:id', async (req, res) => {
   const id = req.params.id;
   const image = await images.findOne({ id: id })
