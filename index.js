@@ -27,7 +27,10 @@ const fileFilter = (req, file, cb) => {
 };
 
 
-const uploadPlanelix = multer({ storage: storage, fileFilter: fileFilter });
+const uploadPlanelix = multer({ storage: storage,limits: {
+  fieldSize: 31457280
+},
+ fileFilter: fileFilter });
 const upload = multer({ storage: storage });
 const cors = require('cors');
 const images = require('./database/images')
