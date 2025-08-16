@@ -12,3 +12,5 @@ A [cdn](https://cdn.shaheerahamed.me) for me to deliver my content you can use i
 ## How do I easily upload content whenever I need?
 
 - Take a look at [this](https://github.com/spicybirsge/cdn-bot) repository.
+
+*⚠️ I modified the code and added some things to this for one of my other side projects so therefore this might have some meaningless code you might have to review it and remove those codes or ignore it and let it run with that additional code which might not be useful for you*
